@@ -1,0 +1,61 @@
+<div *ngIf = '!loading' class="app flex-row align-items-center mt-5">
+  <div class="container text-center">
+    <div class="row mb-3">
+      <div class="col-md-10 col-sm-12">
+        <input type="text" [(ngModel)] = "inputSearch" class="form-control mb-1" aria-describedby="input search data" (change) = "search()">
+      </div>
+      <div class="col-md-2 col-sm-12 text-right">
+        <button type="button" class="btn btn-warning w-100" (click)="search()" [disabled] = "!inputSearch">Search</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-sm-12 pk-card" *ngFor="let card of pokemonArray" (click) = "clickedCard(card.id)">
+        <div class="card text-center" style="height: 300px; margin-bottom: 10px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h6>
+                  {{card.name}}
+                </h6>
+                <h6>
+                  #{{card.id}}
+                </h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <img src="{{card.imageUrl}}" alt="" style="max-width: 100px;">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <span>
+                  Type:
+                </span>
+
+                <p *ngFor='let type of card.types'> {{type}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center mb-5" style="color: white; margin-top: 10px;">
+      <div class="col text-right" (click) = "pagination('previous')"> 
+        <span style="cursor: pointer;">
+          <
+        </span>   
+      </div>
+      <div class="col">{{page}}</div>
+      <div class="col text-left" (click) = "pagination('next')">
+        <span style="cursor: pointer;">
+          >
+        </span> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf = 'loading'>
+  <img class="loading" src="https://cdn.lowgif.com/medium/697d21c2a7fa8563-.gif" alt="">
+</div>

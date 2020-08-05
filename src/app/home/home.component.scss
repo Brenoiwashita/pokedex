@@ -1,0 +1,25 @@
+.pk-card {
+    cursor: pointer;
+}
+
+.card {
+    background-color: #262626;
+    color: white;
+}
+
+.pk-card:hover {
+    transform: scale(1.05);
+}
+
+.loading {
+    margin-left: 40%;
+    margin-top: 12%;
+}
+
+@media only screen and (max-width: 480px) {
+    .loading {
+        margin-left: -1%;
+        margin-top: 244px;
+        width: 100%;
+    }
+}

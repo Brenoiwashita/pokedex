@@ -1,0 +1,153 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h1>
+        {{ID.name}}
+      </h1>
+      <h5>
+        {{ID.id}}
+      </h5>
+    </div>
+  </div>
+  <!-- card type -->
+  <div *ngIf="ID && ID.types && ID.types.length > 0">
+    <div class="row">
+      <div class="col text-right">
+        <span>
+          TIPO
+        </span>
+      </div>
+      <div class="col">
+        <div class="row" *ngFor="let type of ID.types">
+          <div class="col text-left">
+            <span>
+              {{type}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="row">
+            <div class="col">
+              <img class="" src="{{ID.imageUrlHiRes}}" alt="card image high resulation">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+
+
+          <div class="">
+
+
+            <!-- card attack -->
+            <div *ngIf="ID.attacks && ID.attacks.length > 0">
+              <hr>
+              <div class="row">
+                <div class="col text-left">
+                  <span style="font-size: 0.8rem;">
+                    ATAQUE
+                  </span>
+                </div>
+              </div>
+
+              <div class="row" *ngFor="let attack of ID.attacks">
+                <div class="col" style="margin-bottom: 20px">
+                  <span style="font-size: 1.1rem; font-weight: 800;">
+                    {{attack.name}}
+                  </span>
+                  <div class="row">
+                    <div class="col">
+                      <div class="row">
+                        <div class="col-6" style="font-size: 0.9rem;">
+                          MANA: {{attack.convertedEnergyCost}}
+                        </div>
+                        <div class="col-6 text-left">
+                          <div class="progress" style="height: 20px;">
+                            <div class="progress-bar bg-info" role="progressbar"  [ngStyle]="{'width': attack.convertedEnergyCost*25 + '%'}" ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col-6" style="padding: 0; font-size: 0.9rem;">
+                          DAMAGE: {{attack.damage}}
+                        </div>
+                        <div class="col-6 text-left">
+                          <div class="progress" style="height: 20px;">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{'width': attack.damage + '%'}"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {{attack.text}}
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col">
+                  <!-- card resistances  -->
+                    <hr>
+                    <div class="row">
+                      <div class="col text-center">
+                        <span class="title-sub-menu">
+                          RESISTANCE
+                        </span>
+                      </div>
+                    </div>
+
+                    <div *ngIf="ID.resistances && ID.resistances.length > 0">
+                      <div class="text-center" *ngFor="let resistance of ID.resistances">
+                        <span>
+                          {{resistance.type}}
+                        </span>
+                      </div>
+                    </div>
+                    <div *ngIf="!ID.resistances" class="text-center">
+                      <span>
+                        -
+                      </span>
+                    </div>
+                </div>
+                <div class="col">
+                  <!-- card weaknesses -->
+                  <div *ngIf="ID && ID.weaknesses &&ID.weaknesses.length > 0">
+                    <hr>
+                    <div class="row">
+                      <div class="col text-center">
+                        <span class="title-sub-menu">
+                          WEAKNESSES
+                        </span>
+                      </div>
+                    </div>
+
+                    <div *ngIf="ID && ID.weaknesses &&ID.weaknesses.length > 0">
+                      <div class="text-center" *ngFor="let weaknesses of ID.weaknesses">
+                        <span>
+                          {{weaknesses.type}}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div *ngIf="ID && !ID.weaknesses &&ID.weaknesses.length === 0">
+                      <span>
+                        -
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
